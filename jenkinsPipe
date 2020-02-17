@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {
+        
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/Shyam876/NodeApp'
+      }
+    }
+        
+    stage('Install dependencies') {
+      steps {
+        bat 'npm install'
+      }
+    }
+     
+    stage('Test') {
+      steps {
+         bat 'npm test'
+      }
+    }      
+  }
+}
